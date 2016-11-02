@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>ng-notify</title>
+  <link rel="stylesheet" href="./notify.css">
+</head>
+
+<body ng-cloak>
+	<main ng-controller="notifyCtrl as vm">
+		<button ng-click="vm.info()">info</button>
+<!-- 		<button ng-click="vm.success()">success</button>
+		<button ng-click="vm.error()">error</button>
+		<button ng-click="vm.warn()">warn</button> -->
+	</main>
+	<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/angular.js/1.4.5/angular.min.js"></script>
+  <script src="./notify.js"></script>
+  <script>
+  var app = angular.module('app', ['ng.notify'])
+  app.controller('notifyCtrl', ['$scope', 'ngNotify', function($scope, ngNotify) {
+  	var vm = this
+  	vm.info = info
+
+  	function info() {
+  		ngNotify.info({
+  			title: 'This is title!',
+  			content: 'This is content!',
+  			onOk: function() {
+  				this.close()
+  			},
+  			okText: '确认'
+  		})
+  	}
+  }])
+  angular.element(function() {
+    angular.bootstrap(document, ['app'])
+  })
+  </script>
+</body>
+
+</html>
