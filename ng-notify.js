@@ -178,5 +178,4 @@
     angular.element('body').append($container)
     return $container
   }
-
 }))
